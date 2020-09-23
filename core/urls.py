@@ -13,7 +13,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path('^api/', include(router.urls)),
 
-    path('gstype/', vw_goodstype.index, name='goodstypes'),
+    path('gstypes/', vw_goodstype.index, name='goodstypes'),
+    # path('gstype/', vw_goodstype.detail, name='goodstypes-forms'),
 
     path('accounts/', include('allauth.urls')),
     path("", include("authentication.urls")),
