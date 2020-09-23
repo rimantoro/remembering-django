@@ -1,0 +1,84 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+    <link rel="stylesheet" href="/static/assets/plugins/datatables/dataTables.bootstrap4.min.css">
+    <style>
+        .pagination>li {
+            display: inline-block;
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+              <div class="page-block">
+                  <div class="row align-items-center">
+                      <div class="col-md-12">
+                          <div class="page-header-title">
+                              <h5 class="m-b-10">Goods Type</h5>
+                          </div>
+                          <ul class="breadcrumb">
+                              <li class="breadcrumb-item"><a href=""><i class="feather icon-home"></i></a></li>
+                              <li class="breadcrumb-item"><a href="#!">Fleet</a></li>
+                              <li class="breadcrumb-item"><a href="javascript:">Goods Type</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                      <div class="col-xl-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h5>Goods Type</h5>
+                            <!-- <span class="d-block m-t-5">&nbsp;</span> -->
+                          </div>
+                          <div class="card-block table-border-style">
+                            <div class="table-responsive">
+                              <table id="goodstype" class="table table-hover" data-server-side="true" data-ajax="/api/gstype/?format=datatables">
+                                <thead>
+                                  <tr>
+                                    <th data-data="id">ID</th>
+                                    <th data-data="goods_type">Type Name</th>
+                                    <th data-data="temp_min">Min. Temp</th>
+                                    <th data-data="temp_max">Max. Temp</th>
+                                  </tr>
+                                </thead>
+                                <tbody></tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- [ Main Content ] end -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+    <script src="/static/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/static/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          $('#goodstype').DataTable({
+            pagingType: "full_numbers"
+          });
+      });
+    </script>
+{% endblock javascripts %}
