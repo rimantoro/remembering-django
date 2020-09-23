@@ -69,9 +69,25 @@
 {% block javascripts %}
     <script src="/static/assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script>
+      $('#goodstype thead tr').append('<th/>');
       $(document).ready(function() {
           $('#goodstype').DataTable({
-            pagingType: "full_numbers"
+            pagingType: "full_numbers",
+            columns: [
+              { data: 'id' },
+              { data: 'goods_type' },
+              { data: 'temp_min' },
+              { data: 'temp_max' },
+              {
+                data: null,
+                width: '10%',
+                render: function ( data, type, row ) {
+                  return ' \
+                    <button class="btn btn-info center"><i class="feather icon-edit-2"></i>edit</button>\
+                    <button class="btn btn-danger center"><i class="feather icon-delete"></i>delete</button>';
+                }
+              }
+            ]
           });
       });
     </script>
