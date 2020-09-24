@@ -2,6 +2,15 @@
 
 Cuma buat inget-nget lagi ajaah.
 
+## DEBUG MODE
+
+```
+$> # activate your virtual env
+$> source your_venv/bin/activate
+$> # set debug active
+$(python3)> export DEBUG=1
+```
+
 ## START SERVER
 
 Jangan lupa pakai virtual env untuk python, jangan lupa diactivate juga.
