@@ -15,28 +15,26 @@ def detail(request, id=None):
     context = {
         'msg': None,
         'success': None,
-        'segment': None
+        'segment': None,
+        'form': None,
     }
 
     if request.method == "POST":
         form = GoodsTypeForm(request.POST)
         if form.is_valid():
             myform = form.save()
-            msg     = 'data created.'
-            success = True
-
-            logging.debug('call form.save(), result=%s', myform)
-            
+            logging.error('call form.save(), result=%s', myform)
+            context['msg']     = 'data created.'
+            context['success'] = True
             return redirect("/gstypes/")
         else:
-            msg = 'Form is not valid'
-            success = False  
+            context['msg'] = 'Form is not valid'
+            context['success'] = False 
+            return redirect("/gstypes/")
     else:
-        form = GoodsTypeForm()
+        context['form'] = GoodsTypeForm()
     
     context['segment'] = request.path.split('/')[-1]
-    context['success'] = success
-    context['msg'] = msg
     html_template = loader.get_template( 'goodstype/form.html' )
     return HttpResponse(html_template.render(context, request))
 

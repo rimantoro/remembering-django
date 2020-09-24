@@ -13,6 +13,7 @@ class GoodsType(models.Model):
 
     class Meta:
         ordering = ['goods_type']
+        db_table = 'app_goodstype'
 
     def __str__(self):
         return self.goods_type

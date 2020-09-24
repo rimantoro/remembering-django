@@ -8,4 +8,4 @@ class GoodsTypeForm(forms.ModelForm):
 
     class Meta:
         model = GoodsType
-        fields = ('goods_type',)
+        fields = '__all__'

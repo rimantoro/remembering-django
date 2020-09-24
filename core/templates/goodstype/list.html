@@ -40,18 +40,30 @@
                             <!-- <span class="d-block m-t-5">&nbsp;</span> -->
                           </div>
                           <div class="card-block table-border-style">
-                            <div class="table-responsive">
-                              <table id="goodstype" class="table table-hover" data-server-side="true" data-ajax="/api/gstype/?format=datatables">
-                                <thead>
-                                  <tr>
-                                    <th data-data="id">ID</th>
-                                    <th data-data="goods_type">Type Name</th>
-                                    <th data-data="temp_min">Min. Temp</th>
-                                    <th data-data="temp_max">Max. Temp</th>
-                                  </tr>
-                                </thead>
-                                <tbody></tbody>
-                              </table>
+                            <div class="row sticky-top">
+                              <div class="col-md-12 ml-auto">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <button class="btn btn-primary" onclick="location.href='/gstype'">Create</button>
+                                    <button class="btn btn-secondary" onclick="location.href='#'">Export</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <table id="goodstype" class="table table-hover" data-server-side="true" data-ajax="/api/gstype/?format=datatables">
+                                  <thead>
+                                    <tr>
+                                      <th data-data="id">ID</th>
+                                      <th data-data="goods_type">Type Name</th>
+                                      <th data-data="temp_min">Min. Temp</th>
+                                      <th data-data="temp_max">Max. Temp</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody></tbody>
+                                </table>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -108,8 +120,8 @@
                 width: '10%',
                 render: function ( data, type, row ) {
                   return ' \
-                    <button class="btn btn-info center"><i class="feather icon-edit-2"></i>edit</button>\
-                    <button class="btn btn-danger center" data-toggle="modal" data-target="#deleteModal" data-id="'+data.id+'"><i class="feather icon-delete"></i>delete</button>';
+                    <button class="btn btn-info"><i class="feather icon-edit-2"></i>edit</button>\
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-id="'+data.id+'"><i class="feather icon-delete"></i>delete</button>';
                 }
               }
             ]
