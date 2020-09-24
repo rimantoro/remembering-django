@@ -21,7 +21,7 @@
                           <ul class="breadcrumb">
                               <li class="breadcrumb-item"><a href=""><i class="feather icon-home"></i></a></li>
                               <li class="breadcrumb-item"><a href="#!">Fleet</a></li>
-                              <li class="breadcrumb-item"><a href="javascript:">Goods Type</a></li>
+                              <li class="breadcrumb-item"><a href="javascript:">Goods Type - Create New</a></li>
                           </ul>
                       </div>
                   </div>
@@ -32,25 +32,33 @@
                 <div class="page-wrapper">
                     <!-- [ Main Content ] start -->
                     <div class="row">
-                      <div class="col-xl-12">
+                      <div class="col-md-12">
                         <div class="card">
                           <div class="card-header">
                             <h5>Goods Type</h5>
                             <!-- <span class="d-block m-t-5">&nbsp;</span> -->
                           </div>
                           <div class="card-block table-border-style">
-                            <div class="table-responsive">
-                              
-                              <form action="/your-name/" method="post">
-                                  {% csrf_token %}
-                                  {% for field in form.visible_fields %}
-                                      {{ field.errors }}
-                                      {{ field.help_text }}
-                                      {{ field }}
-                                  {% endfor %}
-                                  <input type="submit" value="Submit">
-                              </form>
+                            <div class="row">
+                              <div class="col-md-12">
 
+                                <form action="/gstype/" method="post">
+                                    {% csrf_token %}
+                                    {% for field in form.visible_fields %}
+                                        {{ field.errors }}
+                                        
+                                        <div class="form-group row">
+                                          <label class="col-sm-2 col-form-label">{{ field.label }}</label>
+                                          <div class="col-sm-10">
+                                            {{ field }}
+                                            <div class="mb-0 text-muted">{{ field.help_text }}</div>
+                                          </div>
+                                        </div>
+                                    {% endfor %}
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+
+                              </div>
                             </div>
                           </div>
                         </div>

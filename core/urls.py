@@ -14,7 +14,8 @@ urlpatterns = [
     re_path('^api/', include(router.urls)),
 
     path('gstypes/', vw_goodstype.index, name='goodstypes'),
-    # path('gstype/', vw_goodstype.detail, name='goodstypes-forms'),
+    path('gstype/delete', vw_goodstype.do_delete),
+    path('gstype/<int:id>/', vw_goodstype.detail),
 
     path('accounts/', include('allauth.urls')),
     path("", include("authentication.urls")),

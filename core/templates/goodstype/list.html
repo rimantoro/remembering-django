@@ -63,6 +63,31 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Delete Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            dou you want to proceed with deletion ? <span class="text-danger">DATA WILL BE LOST</span>.
+          </div>
+          <div class="modal-footer">
+            <form action="/gstype/delete" method="post">
+              {% csrf_token %}
+              <input type="hidden" id="id" name="id">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-danger">DELETE</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
@@ -84,11 +109,18 @@
                 render: function ( data, type, row ) {
                   return ' \
                     <button class="btn btn-info center"><i class="feather icon-edit-2"></i>edit</button>\
-                    <button class="btn btn-danger center"><i class="feather icon-delete"></i>delete</button>';
+                    <button class="btn btn-danger center" data-toggle="modal" data-target="#deleteModal" data-id="'+data.id+'"><i class="feather icon-delete"></i>delete</button>';
                 }
               }
             ]
           });
+
+          $('#deleteModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var id = button.data('id') // Extract info from data-* attributes
+            var me = $(this)
+            me.find('input#id').val(id)
+          })
       });
     </script>
 {% endblock javascripts %}
