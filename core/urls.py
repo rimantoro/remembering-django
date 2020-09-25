@@ -15,8 +15,8 @@ urlpatterns = [
 
     path('gstypes/', vw_goodstype.index, name='goodstypes'),
     path('gstype/delete', vw_goodstype.do_delete),
-    path('gstype/<int:id>', vw_goodstype.detail),
-    path('gstype/', vw_goodstype.detail),
+    path('gstype/<int:id>', vw_goodstype.change),
+    path('gstype/', vw_goodstype.create),
 
     path('accounts/', include('allauth.urls')),
     path("", include("authentication.urls")),
