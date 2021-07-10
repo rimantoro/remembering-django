@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     # our custom app
     'app',
     'authentication',
+
+    # restframework datatable
+    'rest_framework_datatables',
 ]
 
 MIDDLEWARE = [
@@ -100,6 +103,21 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+################ NEED BY djangorestframework-datatables ################
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework_datatables.renderers.DatatablesRenderer',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'rest_framework_datatables.filters.DatatablesFilterBackend',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework_datatables.pagination.DatatablesPageNumberPagination',
+    'PAGE_SIZE': 50,
+}
+
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -154,7 +172,7 @@ STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'core/static'),
+    os.path.join(BASE_DIR, 'core/staticfiles'),
 )
 #############################################################
 #############################################################

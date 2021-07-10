@@ -27,3 +27,4 @@ Unipath==1.1
 urllib3==1.25.10
 whitenoise==5.2.0
 wrapt==1.12.1
+djangorestframework-datatables==0.5.2

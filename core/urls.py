@@ -1,12 +1,24 @@
 # -*- encoding: utf-8 -*-
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+from rest_framework import routers
+
+from app.goodstype import views as vw_goodstype
+
+router = routers.DefaultRouter()
+router.register(r'gstype', vw_goodstype.GoodstypeViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path('^api/', include(router.urls)),
+
+    path('gstypes/', vw_goodstype.index, name='goodstypes'),
+    path('gstype/delete', vw_goodstype.do_delete),
+    path('gstype/<int:id>', vw_goodstype.change),
+    path('gstype/', vw_goodstype.create),
+
     path('accounts/', include('allauth.urls')),
-    
     path("", include("authentication.urls")),
     path("", include("app.urls")),
 ]

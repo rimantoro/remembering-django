@@ -1,9 +1,11 @@
 # -*- encoding: utf-8 -*-
 
-
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.models import Group
 
-from app.goodstype.models import GoodsType
+from .forms import UserAdminCreationForm, UserAdminChangeForm
+from .models import GoodsType
 
 class GoodsTypeAdmin(admin.ModelAdmin):
     # The forms to add and change user instances
@@ -13,10 +15,10 @@ class GoodsTypeAdmin(admin.ModelAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('id', 'goods_type', 'temp_min', 'temp_max')
+    list_display = ('goods_type', 'temp_min', 'temp_max')
     list_filter = ('goods_type',)
     fieldsets = (
-        (None, {'fields': ('id', 'goods_type')}),
+        (None, {'fields': ('goods_type')}),
         ('Temperature Threshold', {'fields': ( 'temp_min', 'temp_max' )}),
     )
     # # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
@@ -28,7 +30,7 @@ class GoodsTypeAdmin(admin.ModelAdmin):
     #     ),
     # )
     search_fields = ('goods_type', 'temp_min', 'temp_max')
-    ordering = ('id',)
+    ordering = ('goods_type',)
     filter_horizontal = ()
 
 
